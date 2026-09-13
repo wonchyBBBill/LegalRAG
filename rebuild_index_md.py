@@ -91,7 +91,7 @@ def build_md_index(
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--md-folder", default="./law_md", help="Folder containing .md files")
-    parser.add_argument("--out", default="./law_db_md", help="Output DB path")
+    parser.add_argument("--out", default="./law_md_db", help="Output DB path")
     parser.add_argument("--embedding", default="all-MiniLM-L6-v2", help="Embedding model")
     args = parser.parse_args()
 

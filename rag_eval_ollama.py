@@ -21,7 +21,7 @@ from typing import Optional
 
 # ── LangChain imports (same stack as RAGbot.py) ─────────────────────────────
 from langchain_chroma import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_ollama import ChatOllama
 from langchain_classic.chains import create_retrieval_chain
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
@@ -81,7 +81,7 @@ class RAGEvaluator:
 
     def __init__(
         self,
-        db_path: str = "./law_db_md", # UPDATED: default to v2
+        db_path: str = "./law_md_db",
         embedding_model: str = "all-MiniLM-L6-v2",
         llm_model: str = "qwen2.5:3b",
         k: int = 5, # UPDATED: match bot's k=5
@@ -303,7 +303,7 @@ def load_cases(path: str = "eval_dataset.json") -> list[EvalCase]:
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate the RAG legal Q&A system")
-    parser.add_argument("--db", default="./law_db_md", help="Path to Chroma vector DB")
+    parser.add_argument("--db", default="./law_md_db", help="Path to Chroma vector DB")
     parser.add_argument("--dataset", default="eval_dataset.json", help="Eval dataset JSON")
     parser.add_argument("--category", help="Filter by category (factual, procedural, etc.)")
     parser.add_argument("--id", help="Run a single test by ID")

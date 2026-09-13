@@ -49,7 +49,7 @@ def show_results(query: str, retriever, db, verbose: bool = True):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("queries", nargs="*", help="Query strings to test")
-    parser.add_argument("--db", default="./law_db")
+    parser.add_argument("--db", default="./law_md_db")
     parser.add_argument("--k", type=int, default=4, help="Number of chunks to retrieve")
     parser.add_argument("--compare", nargs=2, metavar=("Q1", "Q2"),
                         help="Compare retrieval for two queries side-by-side")

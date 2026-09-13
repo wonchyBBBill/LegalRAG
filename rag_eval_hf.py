@@ -70,7 +70,7 @@ class RAGEvaluatorHF:
 
     def __init__(
         self,
-        db_path: str = "./law_db_md",
+        db_path: str = "./law_md_db",
         embedding_model: str = "all-MiniLM-L6-v2",
         hf_model_id: str = "Qwen/Qwen3-8B",
         k: int = 5,
@@ -250,7 +250,7 @@ def load_cases(path: str = "eval_dataset.json") -> list[EvalCase]:
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate the RAG legal Q&A system using HF Model")
-    parser.add_argument("--db", default="./law_db_md", help="Path to Chroma vector DB")
+    parser.add_argument("--db", default="./law_md_db", help="Path to Chroma vector DB")
     parser.add_argument("--dataset", default="eval_dataset.json", help="Eval dataset JSON")
     parser.add_argument("--model", default="Qwen/Qwen3-8B", help="HF Model ID")
     args = parser.parse_args()
