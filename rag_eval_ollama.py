@@ -19,7 +19,7 @@ from pathlib import Path
 from dataclasses import dataclass, field, asdict
 from typing import Optional
 
-# ── LangChain imports (same stack as RAGbot2.py) ─────────────────────────────
+# ── LangChain imports (same stack as RAGbot.py) ─────────────────────────────
 from langchain_chroma import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_ollama import ChatOllama
