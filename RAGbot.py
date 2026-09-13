@@ -8,12 +8,12 @@ from langchain_core.prompts import ChatPromptTemplate
 def main():
     # 1. Embeddings & Vector DB
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-    # UPDATED: Now using law_db_v2 for better chunking (RecursiveCharacterTextSplitter)
-    vector_db = Chroma(persist_directory="./law_db_v2", embedding_function=embeddings)
+    # UPDATED: Now using law_db_md for better chunking (RecursiveCharacterTextSplitter)
+    vector_db = Chroma(persist_directory="./law_db_md", embedding_function=embeddings)
     retriever = vector_db.as_retriever(search_kwargs={"k": 5}) # Increased k slightly for better recall
 
     # 2. Local Ollama LLM
-    llm = ChatOllama(model="qwen2.5:3b", temperature=0.1) # Lower temperature for higher factual consistency
+    llm = ChatOllama(model="qwen3:8b", temperature=0.1) # Lower temperature for higher factual consistency
 
     # 3. HARDENED System Prompt
     # We explicitly tell the model to refuse out-of-scope questions and stick strictly to the context.
@@ -39,7 +39,7 @@ def main():
     question_answer_chain = create_stuff_documents_chain(llm, prompt)
     rag_chain = create_retrieval_chain(retriever, question_answer_chain)
 
-    print("Legal RAG Bot Ready (Using law_db_v2). How can I help you? (enter :q to quit)\n")
+    print("Legal RAG Bot Ready (Using law_db_md). How can I help you? (enter :q to quit)\n")
 
     while True:
         question = input("You: ").strip()
