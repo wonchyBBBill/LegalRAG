@@ -13,7 +13,7 @@ def main():
     retriever = vector_db.as_retriever(search_kwargs={"k": 5}) # Increased k slightly for better recall
 
     # 2. Local Ollama LLM
-    llm = ChatOllama(model="qwen3:8b", temperature=0.1) # Lower temperature for higher factual consistency
+    llm = ChatOllama(model="qwen2.5:3b", temperature=0.1) # Lower temperature for higher factual consistency
 
     # 3. HARDENED System Prompt
     # We explicitly tell the model to refuse out-of-scope questions and stick strictly to the context.
@@ -25,8 +25,13 @@ def main():
         "2. If the answer is not explicitly stated in the context, or if the question is about a topic "
         "(e.g., tax, personal injury, general advice) not present in the provided documents, "
         "you MUST state: 'I am sorry, but this information is outside the scope of the provided legal documents.'\n"
-        "3. Do not use outside knowledge or hallucinations.\n"
-        "4. If the context contains typos (e.g., 'Tade' instead of 'Trade'), interpret them based on the legal context.\n\n"
+        "3. Do not summarize away critical details. Be precise.\n"
+        "4. Do not use outside knowledge or hallucinations.\n"
+        "5. If the context contains typos (e.g., 'Tade' instead of 'Trade'), interpret them based on the legal context.\n\n"
+        "EXAMPLE OF A PERFECT ANSWER:\n"
+        "Question: What is the term of protection for a patent?\n"
+        "Context: ...The term of the patent is 20 years from the filing date...\n"
+        "Answer: The term of protection for a patent is 20 years from the filing date.\n\n"
         "Context:\n{context}"
     )
     
