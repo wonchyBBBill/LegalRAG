@@ -6,7 +6,7 @@ Replaces Ollama with a direct Hugging Face Transformers pipeline.
 Designed to run on a high-performance server with a GPU.
 
 Usage:
-    python rag_eval_hf.py --model "meta-llama/Llama-3.1-8B-Instruct"
+    python rag_eval_hf.py --model "Qwen/Qwen3-8B"
 """
 
 import argparse
@@ -20,10 +20,10 @@ from typing import Optional
 
 # ── LangChain imports ─────────────────────────────────────────────────────────
 from langchain_chroma import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline
-from langchain.chains import create_retrieval_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_classic.chains import create_retrieval_chain
+from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 
@@ -73,7 +73,7 @@ class RAGEvaluatorHF:
         self,
         db_path: str = "./law_db_v2",
         embedding_model: str = "all-MiniLM-L6-v2",
-        hf_model_id: str = "meta-llama/Llama-3.1-8B-Instruct",
+        hf_model_id: str = "Qwen/Qwen3-8B",
         k: int = 5,
     ):
         print("Loading embeddings model...")
@@ -253,7 +253,7 @@ def main():
     parser = argparse.ArgumentParser(description="Evaluate the RAG legal Q&A system using HF Model")
     parser.add_argument("--db", default="./law_db_v2", help="Path to Chroma vector DB")
     parser.add_argument("--dataset", default="eval_dataset.json", help="Eval dataset JSON")
-    parser.add_argument("--model", default="meta-llama/Llama-3.1-8B-Instruct", help="HF Model ID")
+    parser.add_argument("--model", default="Qwen/Qwen3-8B", help="HF Model ID")
     args = parser.parse_args()
 
     cases = load_cases(args.dataset)
