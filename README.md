@@ -10,7 +10,7 @@ The system follows a "Structural RAG" approach, moving beyond simple text splitt
 1.  **Structural Extraction**: PDFs are converted to Markdown (via `pdf_to_markdown.py`). This preserves headers, tables, and lists, which are critical for legal context.
 2.  **Header-Based Indexing**: Instead of fixed-size chunks, the system uses `rebuild_index_md.py` to split documents by their actual legal sections (`#`, `##`, `###`). This ensures that legal rules are never split in half.
 3.  **High-Precision Retrieval**: The system uses a Vector DB (Chroma) with `all-MiniLM-L6-v2` embeddings, achieving a **100% retrieval hit rate** on the evaluation dataset.
-4.  **Controlled Generation**: A large-scale LLM (Qwen 2.5-7B/8B) is used with a **Hardened System Prompt**, enforcing strict adherence to the provided context and ensuring 100% accuracy in refusing out-of-scope questions.
+4.  **Controlled Generation**: A large-scale LLM (Qwen3-8B) is used with a **Hardened System Prompt**, enforcing strict adherence to the provided context and ensuring 100% accuracy in refusing out-of-scope questions.
 
 ---
 
@@ -33,7 +33,7 @@ The system follows a "Structural RAG" approach, moving beyond simple text splitt
 ### 📂 Data
 - `/law/`: Source PDF ordinances.
 - `/law_md/`: Processed Markdown versions of the ordinances.
-- `/law_db_md/`: The structural Chroma vector database.
+- `/law_md_db/`: The structural Chroma vector database.
 
 ---
 
@@ -41,7 +41,7 @@ The system follows a "Structural RAG" approach, moving beyond simple text splitt
 
 ### 1. Installation
 ```bash
-pip install langchain langchain-chroma langchain-community langchain-huggingface 
+pip install langchain langchain-chroma langchain-community langchain-huggingface langchain-classic
 pip install transformers torch accelerate marker-pdf
 ```
 
@@ -53,8 +53,8 @@ python pdf_to_markdown.py
 # Step 2: Markdown -> Vector DB
 python rebuild_index_md.py
 
-# Step 3: Evaluate Performance (on Server)
-python rag_eval_hf.py --model "Qwen/Qwen2.5-7B-Instruct"
+# Step 3: Evaluate Performance
+python rag_eval_hf.py
 
 # Step 4: Chat with the Bot
 python RAGbot_hf.py
