@@ -1,0 +1,130 @@
+[
+  {
+    "id": "pat-001",
+    "question": "What is the term of protection for a patent under the Patents Ordinance?",
+    "expected_keywords": ["20 years", "grant", "filing date"],
+    "source": "Patents Ordinance",
+    "category": "factual"
+  },
+  {
+    "id": "pat-002",
+    "question": "Who can apply for a patent in Hong Kong?",
+    "expected_keywords": ["inventor", "assignee", "application"],
+    "source": "Patents Ordinance",
+    "category": "factual"
+  },
+  {
+    "id": "pat-003",
+    "question": "What are the requirements for a patent to be granted?",
+    "expected_keywords": ["novelty", "inventive step", "industrial application"],
+    "source": "Patents Ordinance",
+    "category": "multi-hop"
+  },
+  {
+    "id": "pat-004",
+    "question": "What happens if a patent is not renewed?",
+    "expected_keywords": ["lapse", "renewal", "fee", "cease"],
+    "source": "Patents Ordinance",
+    "category": "procedural"
+  },
+  {
+    "id": "copy-001",
+    "question": "How long does copyright protection last for a literary work in Hong Kong?",
+    "expected_keywords": ["70 years", "author", "death"],
+    "source": "Copyright Ordinance",
+    "category": "factual"
+  },
+  {
+    "id": "copy-002",
+    "question": "What types of works are protected under the Copyright Ordinance?",
+    "expected_keywords": ["literary", "dramatic", "musical", "artistic", "film"],
+    "source": "Copyright Ordinance",
+    "category": "factual"
+  },
+  {
+    "id": "copy-003",
+    "question": "What is fair dealing and when does it apply?",
+    "expected_keywords": ["fair dealing", "research", "education", "criticism", "news"],
+    "source": "Copyright Ordinance",
+    "category": "conceptual"
+  },
+  {
+    "id": "copy-004",
+    "question": "What are the remedies available for copyright infringement?",
+    "expected_keywords": ["damages", "injunction", "account of profits", "criminal"],
+    "source": "Copyright Ordinance",
+    "category": "procedural"
+  },
+  {
+    "id": "tm-001",
+    "question": "What can be registered as a trade mark under the Trade Marks Ordinance?",
+    "expected_keywords": ["sign", "graphically", "distinguish", "goods", "services"],
+    "source": "Trade Marks Ordinance",
+    "category": "factual"
+  },
+  {
+    "id": "tm-002",
+    "question": "How long is a trade mark registration valid and can it be renewed?",
+    "expected_keywords": ["10 years", "renewed", "indefinitely"],
+    "source": "Trade Marks Ordinance",
+    "category": "factual"
+  },
+  {
+    "id": "tm-003",
+    "question": "On what grounds can a trade mark registration be refused?",
+    "expected_keywords": ["absolute grounds", "relative grounds", "descriptive", "identical", "similar"],
+    "source": "Trade Marks Ordinance",
+    "category": "multi-hop"
+  },
+  {
+    "id": "br-001",
+    "question": "Who is required to register a business under the Business Registration Ordinance?",
+    "expected_keywords": ["person", "business", "trade", "profession"],
+    "source": "Business Registration Ordinance",
+    "category": "factual"
+  },
+  {
+    "id": "br-002",
+    "question": "What is the penalty for carrying on business without registration?",
+    "expected_keywords": ["fine", "penalty", "offence", "prosecution"],
+    "source": "Business Registration Ordinance",
+    "category": "factual"
+  },
+  {
+    "id": "br-003",
+    "question": "How long is a business registration certificate valid?",
+    "expected_keywords": ["one year", "three years", "renewal"],
+    "source": "Business Registration Ordinance",
+    "category": "procedural"
+  },
+  {
+    "id": "cross-001",
+    "question": "What is the difference between copyright and trade mark protection?",
+    "expected_keywords": ["copyright", "trade mark", "automatic", "registration", "sign", "work"],
+    "source": "Multiple",
+    "category": "cross-document"
+  },
+  {
+    "id": "cross-002",
+    "question": "Can a logo be protected by both copyright and trade mark law?",
+    "expected_keywords": ["artistic work", "copyright", "trade mark", "register"],
+    "source": "Multiple",
+    "category": "cross-document"
+  },
+  {
+    "id": "neg-001",
+    "question": "What is the tax rate for Hong Kong companies?",
+    "expected_keywords": [],
+    "source": "None",
+    "category": "out-of-scope",
+    "expected_refusal": true
+  },
+  {
+    "id": "neg-002",
+    "question": "How do I sue someone for personal injury?",
+    "expected_keywords": [],
+    "source": "None",
+    "category": "out-of-scope",
+    "expected_refusal": true
+  }
+]
