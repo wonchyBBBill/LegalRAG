@@ -9,7 +9,7 @@ def main():
     # 1. Embeddings & Vector DB
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     # UPDATED: Now using law_db_md for better chunking (RecursiveCharacterTextSplitter)
-    vector_db = Chroma(persist_directory="./law_db_md", embedding_function=embeddings)
+    vector_db = Chroma(persist_directory="./law_md_db", embedding_function=embeddings)
     retriever = vector_db.as_retriever(search_kwargs={"k": 5}) # Increased k slightly for better recall
 
     # 2. Local Ollama LLM
